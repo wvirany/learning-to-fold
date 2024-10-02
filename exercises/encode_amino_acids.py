@@ -1,3 +1,6 @@
+import torch
+import torch.nn.functional as F
+
 import matplotlib.pyplot as plt
 
 """
@@ -14,7 +17,7 @@ def one_hot_encode_amino_acid(amino_acid):
     Performs one-hot encoding for a single amino acid
     """
 
-    encoding = [0] * 20 # Create 20-dimensional vector of 0's
+    encoding = torch.zeros(20) # Create 20-dimensional vector of 0's
 
     if amino_acid in amino_acids:
         encoding[amino_acids.index(amino_acid)] = 1 # Set bit at corresponding amino acid index to 1
@@ -26,7 +29,7 @@ def encode_sequence(sequence):
     """
     Encode a protein sequence using one-hot encoding
     """
-    return [one_hot_encode_amino_acid(a) for a in sequence]
+    return torch.stack([one_hot_encode_amino_acid(a) for a in sequence])
 
 
 def make_plot(encoded_sequence):
@@ -42,8 +45,3 @@ def make_plot(encoded_sequence):
 
     plt.tight_layout()
     plt.show()
-
-
-test_sequence = "ACDK"
-encoded_sequence = encode_sequence(test_sequence)
-make_plot(encoded_sequence)
