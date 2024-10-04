@@ -69,9 +69,9 @@ def visualize_msa_clusters(msa, clusters):
     plt.tight_layout()
     plt.show()
 
-alignment = AlignIO.read('synthetic_msa.fasta', 'fasta')
-msa = np.array([str(record.seq) for record in alignment])
+# alignment = AlignIO.read('synthetic_msa.fasta', 'fasta')
+# msa = np.array([str(record.seq) for record in alignment])
 
-clusters, cluster_centers = cluster_msa(msa, threshold=.44)
+# clusters, cluster_centers = cluster_msa(msa, threshold=.44)
 
-visualize_msa_clusters(msa, clusters)
+# visualize_msa_clusters(msa, clusters)
